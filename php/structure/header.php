@@ -18,19 +18,24 @@
                     <li class="nav__item">
                         <a href="/index.php">Главная</a>
                     </li>
-                    <li class="nav__item">
-                        <a href="/registration.php">Регистрация</a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="/authorization.php">Авторизация</a>
-                    </li>
+                    <?if(!isset($_SESSION['username'])) {
+                        echo('
+                        <li class="nav__item">
+                            <a href="/registration.php">Регистрация</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/authorization.php">Авторизация</a>
+                        </li>');
+                    }
+                    ?>
                 </ul>
             </nav>
+            <?
+            if (isset($_SESSION['username'])) {
+                echo "<p>Добро пожаловать на волшебный сайт, " . $_SESSION["username"] . "</p>";
+                echo "<a id='session-destroy' href = '/php/session/sessionDestroy.php'>Выход</a>";
+            }
+            ?>
         </div>
-        <?
-        if (isset($_SESSION['username'])) {
-            echo "<p>Добро пожаловать на волшебный сайт, " . $_SESSION["username"] . "</p>";
-            echo "<a id='session-destroy' href = '/php/session/sessionDestroy.php'>Выход</a>";
-        }
-        ?>
+
     </header>
