@@ -7,6 +7,23 @@ html,body {
     margin: 0 auto;
 }
 
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.nav__list {
+    display: flex;
+    padding: 0;
+}
+
+.nav__list .nav__item {
+    list-style: none;
+    margin: 0 1rem;
+}
+
 .form-column {
     display: flex;
     flex-direction: column;

@@ -46,7 +46,5 @@ function sendForm(selector, path) {
         } else {
             sendMessage()
         }
-        return false;
     })();
-    return true;
 }
