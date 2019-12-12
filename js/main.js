@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 }, false);
 
-function sendForm(selector, path) {
+async function sendForm(selector, path, sendMsg = true) {
     let form = document.querySelector(selector);
     let formChild = form.children;
 
@@ -21,18 +21,18 @@ function sendForm(selector, path) {
         console.log(err)
     }
 
-    (async () => {
-        console.log(userInfo)
-        let query = await fetch(path, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify(userInfo)
-        })
+    let query = await fetch(path, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(userInfo)
+    })
 
-        let sendInfo = await query.json();
+    let sendInfo = await query.json();
 
+
+    if (sendMsg == true) {
         function sendMessage() {
             if (document.querySelector("#sendForm-msg")) document.querySelector("#sendForm-msg").remove();
             if (sendInfo.msg) {
@@ -46,5 +46,6 @@ function sendForm(selector, path) {
         } else {
             sendMessage()
         }
-    })();
+    }
+    return sendInfo;
 }

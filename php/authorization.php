@@ -6,10 +6,13 @@ $password = $_POST["password"];
 if (strlen($username) && strlen($password)) {
     require_once("connect.php");
 
-    $userPassword = $pdo->prepare("SELECT password FROM users where username=?");
-    $userPassword->execute(array($username));
-    if (password_verify($password, $userPassword->fetchColumn())) {
+    $passwordQuery = $pdo->prepare("SELECT id, password FROM users where username=? LIMIT 1");
+    $passwordQuery->execute(array($username));
+    $userData = $passwordQuery->fetch(PDO::FETCH_ASSOC);
+
+    if (password_verify($password, $userData['password'])) {
         $_SESSION['username'] = $username;
+        $_SESSION['userid'] = $userData['id'];
         header("Location: /");
     } else {
         header("Location: /authorization.php?falseMsg=data");

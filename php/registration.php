@@ -1,5 +1,5 @@
 <?
-require_once("connect.php");
+require("connect.php");
 
 $content = trim(file_get_contents("php://input"));
 
@@ -12,8 +12,6 @@ $fname = $registrInfo['fname'];
 $lname = $registrInfo['lname'];
 
 include_once("class.php");
-
-
 $response = new Response();
 
 if (strlen($username) && strlen($password) && strlen($email) && strlen($fname)) {

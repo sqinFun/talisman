@@ -22,23 +22,36 @@
                         <a href="/articles.php">Новости</a>
                     </li>
                     <? if (!isset($_SESSION['username'])) {
-                        echo ('
+                        ?>
                         <li class="nav__item">
                             <a href="/registration.php">Регистрация</a>
                         </li>
                         <li class="nav__item">
                             <a href="/authorization.php">Авторизация</a>
-                        </li>');
+                        </li>
+                        <?
+                    } else {
+                        ?>
+                        <li class="nav__item">
+                            <a href="/message.php">Сообщения</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/friends.php">Добавить друга</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/friendList.php">Друзья</a>
+                        </li>
+                        <?
                     }
                     ?>
                 </ul>
                 <?
                 if (isset($_SESSION['username'])) {
-                    echo("
+                    ?>
                     <div>
-                        <p>Добро пожаловать на волшебный сайт, " . $_SESSION["username"] . " <a id='session-destroy' href = '/php/session/sessionDestroy.php'>Выход</a> </p>
+                        <p>Добро пожаловать на волшебный сайт, <?echo $_SESSION["username"] ?> <a id='session-destroy' href = '/php/session/sessionDestroy.php'>Выход</a> </p>
                     </div>
-                    ");
+                    <?
                 }
                 ?>
             </nav>
