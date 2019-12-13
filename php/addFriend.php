@@ -12,10 +12,6 @@ $findQuery = $pdo->prepare('SELECT * FROM friends where (sender=:sender AND reci
 $findQuery->execute(array('sender' => $sender, 'recipient' => $recipient));
 $result = $findQuery->fetchAll(PDO::FETCH_OBJ);
 
-function addFriends() {
-    
-}
-
 switch (count($result)) {
     case 0:
         $sendUserInfo = $pdo->prepare('INSERT INTO friends (sender, recipient) values(?,?)');
@@ -30,18 +26,10 @@ switch (count($result)) {
             $sendUserInfo->execute(array($sender, $recipient));
             $msg = "Запрос на добавление в друзья принят";
         }
-
         break;
-
     case 2:
         $msg = "Пользователь уже у вас в друзьях";
         break;
-}
-
-if (!1) {
-
-    $sendUserInfo = $pdo->prepare('INSERT INTO friends (sender, recipient) values(?,?)');
-    $sendUserInfo->execute(array($sender, $recipient));
 }
 
 echo json_encode($msg);
