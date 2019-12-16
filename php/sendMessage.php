@@ -9,7 +9,7 @@ $recipient = $content['recipient'];
 $msg = $content['msg'];
 
 
-$sendMsg = $pdo->prepare('INSERT INTO messages (sender, recipient, message) values(?,?,?)');
+$sendMsg = $pdo->prepare('INSERT INTO messages (sender, recipient, message, time) values(?,?,?, NOW())');
 $result = $sendMsg->execute(array($sender, $recipient, $msg));
 
 
