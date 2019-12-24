@@ -22,14 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
         let userList = sendForm('#friend-form', '/php/findFriend.php');
         userList.then(function (val) {
             let wrap = document.createElement('div');
-            wrap.className = "friends";
+            wrap.classList.add("friends","section");
 
             val.addition.forEach((user) => {
                 let div = document.createElement('div');
-                div.className = "friends__item";
+                div.className = "section__item";
 
                 let btn = document.createElement('button');
-                div.className = "friends__add";
+                btn.className = "btn btn-glass";
 
                 btn.onclick = async (event) => {
                     let result = await addFriend(user);
@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 btn.innerHTML = "Добавить в друзья";
 
                 let p = document.createElement("p");
+                p.className = "section__header"
                 p.innerHTML = user.username;
 
                 div.append(p, btn);

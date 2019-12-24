@@ -1,7 +1,21 @@
 @import "/css/normalize.css" all;
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i&display=swap');
+ /* font-family: 'Roboto', sans-serif;  #fcfcfc*/
 
 html,body {
     font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: #2d3439;
+    background: url(/img/bg.jpg) fixed no-repeat ;
+
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.m-0 {
+    margin: 0;
 }
 
 .container {
@@ -9,24 +23,282 @@ html,body {
     margin: 0 auto;
 }
 
+.section {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.section img {
+    max-width: 100%;
+}
+
+.section__item-right {
+    padding: 10px 10px;
+    border-radius: 0 10px 10px 0;
+    background-color: #fff;
+    border-right: 1px solid #c7c7c7;
+
+}
+
+.section__item-right + .section__item-right {
+    border-top: 1px solid #c7c7c7;
+}
+
+.section__header {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.section__item-left {
+    padding: 10px 10px;
+    border-radius: 10px 0 0 10px;
+    background-color: #fff;
+    border-left: 1px solid #c7c7c7;
+}
+
+.section__item-left + .section__item-left {
+    border-top: 1px solid #c7c7c7;
+}
+
+.btn {
+    display: block;
+    padding: .5em 2em;
+    cursor: pointer;
+    border-radius: .4em;
+    transition: all .3s;
+    text-decoration: none;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn-dark {
+    background-color: #222;
+    color: #fff;
+    border:1px solid #222;
+}
+
+.btn-dark:hover {
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #222;
+}
+
+.btn-glass {
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #222;
+}
+
+.btn-glass:hover {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.nav-wrap {
+    background-color: #2d3439;
+}
+
 .nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    
+    padding: 1rem 0;
 }
 
 .nav__list {
     display: flex;
     padding: 0;
+    margin: 0;
 }
 
-.nav__list .nav__item {
+.nav__item {
+    margin: 0 .3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     list-style: none;
-    margin: 0 1rem;
+    height: 100%;
+    border-radius: .3em;
+    transition: background-color .3s;
+    text-align: center;
+}
+
+.nav__item:hover {
+    background-color: #fcfcfc;
+}
+
+.nav__item:hover a {
+    color: #222;
+}
+
+.nav__item a, .nav__item p {
+    padding: .3em;
+    text-decoration: none;
+    color: #fff;
+    transition: color .3s;
+}
+
+.nav__text {
+    padding: .3em;
+    text-decoration: none;
+    color: #fff;
+    transition: color .3s;
+}
+
+.nav__text a{
+    padding: .3em;
+    text-decoration: none;
+    color: #c7c7c7;
+    transition: color .3s;
+}
+
+
+@media screen and (max-width: 720px) {
+    
+    .nav__list, .nav {
+        flex-direction: column;
+        font-size: 1.5rem;
+    }
+    
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-title {
+    padding: .5em 0;
+    margin: 0;
+}
+
+.msg-danger, #sendForm-msg {
+    color: red;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
 .form-column {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-top: 2px solid #222;
+    border-bottom: 2px solid #222;
+    border-radius: 30px;
+}
+
+.form-column__item {
+    margin: .5rem 0;
+}
+
+.form-column input, .input-dark {
+    padding: .5em;
+    margin: .5em;
+    border-radius: .3em;
+    outline: none;
+    border: 1px solid black;
+    font-size: 1.3em;
+    min-width: 250px;
+}
+
+.form-column__item input::-webkit-input-placeholder {
+    color: #222222;
+}
+
+.normal-link {
+    color: #222222;
+    text-decoration: none;
+}
+
+.grid-col-2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 20px;
+}
+
+.post-name {
+    font-size: 2rem;
+}
+
+.post-description {
+    padding: 20px;
+    margin: 20px 0;
+    font-size: 1.1rem;
+    border-left: 1px solid #222;
+
+}
+
+.page-nav {
+    margin: 40px 0;
+}
+
+.page-nav__item {
+    color: #0026ff;
+    text-decoration: none;
+}
+
+.message__form{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.message__text {
+    height: 60px;
+    width: 100%;
+    border-radius: 10px;
+    resize: none;
+    padding: 1em 0;
+}
+
+.message__text:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.message__history {
+    max-height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
+.message-list__sender {
+    font-weight: bold;
+    color: #000;
+}
+
+.message-list__recipient {
+    color: #9e9e9e;
+    font-weight: bold;
+}
+
+#friend-form {
+    display: flex;
+}
+
+#friend-form input {
+    margin: 0 .3em;
+}
+
+.pithy-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.pithy-form input, .pithy-form textarea,.pithy-form select {
+    padding: .5em;
+    margin: .5em;
+    border-radius: .3em;
+    outline: none;
+    border: 1px solid black;
+}
+
+.pithy-form textarea {
+    resize: none;
+    height: 50vh;
 }

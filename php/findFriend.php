@@ -25,10 +25,13 @@ if (strlen($username)) {
         }
     }    
     */
-    foreach($userData as $row) {
-        array_push($response->addition, new UserData($row->id, $row->username));
+    if ($userData) {
+        foreach ($userData as $row) {
+            array_push($response->addition, new UserData($row->id, $row->username));
+        }
+    } else {
+        $response->msg = "Пользователь с таким именем не найден!";
     }
-
 } else {
     $response->msg = "Введите имя";
 }

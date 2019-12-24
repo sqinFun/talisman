@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
-
+console.log(1);
 }, false);
 
 async function sendForm(selector, path, sendMsg = true) {

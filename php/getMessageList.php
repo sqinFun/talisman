@@ -3,6 +3,7 @@
 require("connect.php");
 require_once('session/sessionStart.php');
 
+
 $sender = $_SESSION['userid'];
 
 $findQuery = $pdo->prepare('SELECT username, message , messages.recipient

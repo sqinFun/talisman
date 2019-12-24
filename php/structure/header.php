@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Talisman</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <header>
-        <div class="container">
-            <nav class="nav">
+        <div class="nav-wrap">
+            <nav class="nav container">
                 <ul class="nav__list">
                     <li class="nav__item">
                         <a href="/index.php">Главная</a>
@@ -33,10 +33,10 @@
                     } else {
                         ?>
                         <li class="nav__item">
-                            <a href="/message.php">Сообщения</a>
+                            <a href="/createArticles.php">Добавить новость</a>
                         </li>
                         <li class="nav__item">
-                            <a href="/friends.php">Добавить друга</a>
+                            <a href="/findFriends.php">Добавить друга</a>
                         </li>
                         <li class="nav__item">
                             <a href="/friendList.php">Друзья</a>
@@ -48,8 +48,8 @@
                 <?
                 if (isset($_SESSION['username'])) {
                     ?>
-                    <div>
-                        <p>Добро пожаловать на волшебный сайт, <?echo $_SESSION["username"] ?> <a id='session-destroy' href = '/php/session/sessionDestroy.php'>Выход</a> </p>
+                    <div class="nav__text">
+                        <p class="m-0">Добро пожаловать на волшебный сайт, <?echo $_SESSION["username"] ?> <a id='session-destroy' class="text-dark"href = '/php/session/sessionDestroy.php'>Выход</a> </p>
                     </div>
                     <?
                 }

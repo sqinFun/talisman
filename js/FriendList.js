@@ -6,22 +6,23 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(friendLisn);
 
         let friendWrap = document.createElement("div");
-        friendWrap.className = "friend";
+        friendWrap.className = "section";
         friendLisn.forEach((item)=> {
             let div = document.createElement("div");
-            div.className = "friend__item";
+            div.className = "section__item-right";
 
             let p = document.createElement("p");
-            p.className = "friend__name";
+            p.className = "section__header";
             p.innerHTML = item.username
 
             let a = document.createElement("a");
+            a.className = "normal-link"
             a.href = `/sendMessage.php?id=${item.recipient}`;
             a.innerHTML = "Написать сообщение";
             div.append(p, a);
             friendWrap.append(div);
         });
-        document.querySelector('.container').append(friendWrap);
+        document.querySelector('.friends-wrap').append(friendWrap);
     })();
 
 }, false);

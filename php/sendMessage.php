@@ -8,11 +8,10 @@ $sender = $_SESSION['userid'];
 $recipient = $content['recipient'];
 $msg = $content['msg'];
 
-
-$sendMsg = $pdo->prepare('INSERT INTO messages (sender, recipient, message, time) values(?,?,?, NOW())');
-$result = $sendMsg->execute(array($sender, $recipient, $msg));
+if (strlen($msg)) {
+    $sendMsg = $pdo->prepare('INSERT INTO messages (sender, recipient, message, time) values(?,?,?, NOW())');
+    $result = $sendMsg->execute(array($sender, $recipient, $msg));
+}
 
 
 echo json_encode($result, JSON_UNESCAPED_UNICODE);
-
-?>

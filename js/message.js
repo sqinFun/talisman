@@ -1,8 +1,8 @@
 "use strict"
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('.message__form').onsubmit = sendMsg;
-    
-    
+
+
     async function sendMsg(event) {
         event.preventDefault();
         let msg = document.querySelector(".message__text").value;
@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         let result = await query.json();
         if (result == true) document.querySelector('.message__text').value = null;
+        document.querySelector(".message__history").innerHTML = null;
+        getMsgList();
     }
 
     async function getMsgList() {
@@ -41,22 +43,25 @@ document.addEventListener('DOMContentLoaded', function () {
         let result = await query.json();
         console.log(result);
         let msgList = document.querySelector(".message__history");
-        result.forEach((value)=> {
+        result.forEach((value) => {
             let user = document.createElement("p");
-            user.className = "message-list__sender";
-            user.innerHTML = value.username;
-
             let msg = document.createElement("p");
-            msg.className = "message-list__message";
+            if (value.recipient !== recipient) {
+                user.className = "message-list__sender";
+                msg.className = "message-list__message-sender";
+            } else {
+                user.className = "message-list__recipient";
+                msg.className = "message-list__message-recipient";
+            }
+            console.log(value);
+            user.innerHTML = value.username;
+            
             msg.innerHTML = value.message;
             msgList.append(user, msg);
         });
     }
-    
+
     getMsgList();
-
-
-
 
 
 

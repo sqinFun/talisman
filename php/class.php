@@ -14,3 +14,7 @@ class UserData {
         $this->username = $name;
     }
 }
+
+$nastya = new UserData("1","kek");
+
+$nastya->username;

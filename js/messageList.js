@@ -7,17 +7,18 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(msgList);
         msgList.forEach((value)=> {
             let div = document.createElement("div");
-            div.className = "message-list__item";
+            div.className = "section__item-left";
             
             let name = document.createElement("p");
-            name.className="message-list__username";
+            name.className="section__header";
             name.innerHTML=(value.username);
 
             let msg = document.createElement("p");
-            msg.className="message-list__message";
+            msg.className="message";
             msg.innerHTML=(value.message);
 
             let send = document.createElement("a");
+            send.className="normal-link";
             send.href = `/sendMessage.php?id=${value.recipient}`
             send.innerHTML = "Ответить"; 
 
